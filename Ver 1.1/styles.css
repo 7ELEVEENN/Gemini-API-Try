@@ -43,16 +43,48 @@ h1 {
     margin-bottom: 1.5rem;
     padding: 1rem;
     border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.message-icon {
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.message-icon i {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.message-text {
+    flex: 1;
 }
 
 .user-message {
     background-color: #f0f0f0;
     margin-left: 2rem;
+    flex-direction: row-reverse;
 }
 
 .ai-message {
     background-color: #e8e8e8;
     margin-right: 2rem;
+}
+
+.user-message .message-icon {
+    background-color: #4a90e2;
+}
+
+.ai-message .message-icon {
+    background-color: #50b674;
 }
 
 .input-container {
