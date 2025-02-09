@@ -40,6 +40,7 @@ h1 {
 }
 
 .message {
+    position: relative;
     margin-bottom: 1.5rem;
     padding: 1rem;
     border-radius: 8px;
@@ -68,6 +69,13 @@ h1 {
     flex: 1;
 }
 
+.message-timestamp {
+    position: absolute;
+    top: -20px;
+    font-size: 0.8rem;
+    color: #666;
+}
+
 .user-message {
     background-color: #f0f0f0;
     margin-left: 2rem;
@@ -85,6 +93,14 @@ h1 {
 
 .ai-message .message-icon {
     background-color: #50b674;
+}
+
+.user-message .message-timestamp {
+    right: 0;
+}
+
+.ai-message .message-timestamp {
+    left: 0;
 }
 
 .input-container {

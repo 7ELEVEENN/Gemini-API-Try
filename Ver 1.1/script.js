@@ -29,9 +29,22 @@ async function generateResponse(prompt) {
     }
 }
 
+function getFormattedTime() {
+    const now = new Date();
+    return now.toLocaleTimeString('en-US', { 
+        hour: '2-digit', 
+        minute: '2-digit'
+    });
+}
+
 function addMessage(text, isUser = false) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${isUser ? 'user-message' : 'ai-message'}`;
+    
+    // Add timestamp
+    const timestampDiv = document.createElement('div');
+    timestampDiv.className = 'message-timestamp';
+    timestampDiv.textContent = getFormattedTime();
     
     const iconDiv = document.createElement('div');
     iconDiv.className = 'message-icon';
@@ -43,6 +56,7 @@ function addMessage(text, isUser = false) {
     textDiv.className = 'message-text';
     textDiv.textContent = text;
     
+    messageDiv.appendChild(timestampDiv);
     messageDiv.appendChild(iconDiv);
     messageDiv.appendChild(textDiv);
     chatHistory.appendChild(messageDiv);
