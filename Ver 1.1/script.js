@@ -31,10 +31,20 @@ async function generateResponse(prompt) {
 
 function getFormattedTime() {
     const now = new Date();
-    return now.toLocaleTimeString('en-US', { 
+    const monthNames = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    
+    const month = monthNames[now.getMonth()];
+    const day = String(now.getDate()).padStart(2, '0');
+    const year = now.getFullYear();
+    const time = now.toLocaleTimeString('en-US', { 
         hour: '2-digit', 
         minute: '2-digit'
     });
+    
+    return `${month}/${day}/${year} ${time}`;
 }
 
 function addMessage(text, isUser = false) {
