@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Guide Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Interview Guide Assistant</h1>
+            <p>Get personalized interview questions and guidance for your next role</p>
+        </header>
+
+        <main>
+            <form id="interviewForm" class="interview-form">
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <input type="text" id="role" placeholder="e.g. Software Engineer" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="level">Experience Level</label>
+                    <select id="level" required>
+                        <option value="">Select Level</option>
+                        <option value="Junior">Junior</option>
+                        <option value="Mid-Level">Mid-Level</option>
+                        <option value="Senior">Senior</option>
+                        <option value="Lead">Lead</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Question Category</label>
+                    <select id="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Technical">Technical</option>
+                        <option value="Behavioral">Behavioral</option>
+                        <option value="System Design">System Design</option>
+                        <option value="All">All Categories</option>
+                    </select>
+                </div>
+
+                <button type="submit">Generate Guide</button>
+            </form>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Generating your interview guide...</p>
+            </div>
+
+            <div id="result" class="result hidden">
+                <h2>Your Interview Guide</h2>
+                <div id="questions" class="questions"></div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html> 
