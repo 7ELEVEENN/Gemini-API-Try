@@ -12,7 +12,7 @@ const interviewAssistant = new InterviewAssistant();
 
 app.post('/generate-questions', async (req, res) => {
     try {
-        const { role, level, category } = req.body;
+        const { role, level, category, skills, experience } = req.body;
         
         if (!role || !level || !category) {
             return res.status(400).json({
@@ -21,12 +21,14 @@ app.post('/generate-questions', async (req, res) => {
             });
         }
 
-        console.log('Generating questions for:', { role, level, category });
+        console.log('Generating questions for:', { role, level, category, skills });
         
         const questions = await interviewAssistant.generateInterviewQuestions(
             role, 
             level, 
-            category
+            category,
+            skills,
+            experience
         );
         
         console.log('Questions generated successfully');

@@ -6,9 +6,9 @@ class InterviewAssistant {
         this.baseUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${this.apiKey}`;
     }
 
-    async generateInterviewQuestions(role, level, category) {
+    async generateInterviewQuestions(role, level, category, skills = '', experience = '') {
         try {
-            const prompt = this.createPrompt(role, level, category);
+            const prompt = this.createPrompt(role, level, category, skills, experience);
             const response = await this.callGeminiAPI(prompt);
             return this.formatResponse(response);
         } catch (error) {
@@ -17,14 +17,26 @@ class InterviewAssistant {
         }
     }
 
-    createPrompt(role, level, category) {
-        return `Generate ${category} interview questions for a ${level} ${role} position.
-                Include:
-                - 3 technical questions with detailed answers
-                - 2 system design scenarios if applicable
-                - 2 behavioral questions with example good responses
-                - Tips for answering these questions
-                Format the response in a clear, structured way.`;
+    createPrompt(role, level, category, skills = '', experience = '') {
+        let prompt = `Generate ${category} interview questions for a ${level} ${role} position.\n`;
+        
+        if (skills) {
+            prompt += `Focus on these skills and technologies: ${skills}\n`;
+        }
+        
+        if (experience) {
+            prompt += `Consider this background: ${experience}\n`;
+        }
+        
+        prompt += `Include:
+            - ${level === 'Intern' ? '2 basic' : '3'} technical questions with detailed answers
+            - ${level !== 'Intern' ? '2 system design scenarios if applicable\n' : ''}
+            - 2 behavioral questions with example good responses
+            - Specific tips for ${level} level candidates
+            - Key points to emphasize during the interview
+            Format the response in a clear, structured way.`;
+        
+        return prompt;
     }
 
     async callGeminiAPI(prompt) {

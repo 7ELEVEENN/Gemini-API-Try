@@ -14,9 +14,26 @@
         </header>
 
         <main>
+            <div class="role-helper">
+                <button id="showRolesBtn" class="secondary-button">View Common Roles</button>
+                <div id="rolesList" class="roles-list hidden">
+                    <h3>Common Tech Roles</h3>
+                    <div class="roles-grid">
+                        <div class="role-card" data-role="Software Engineer">Software Engineer</div>
+                        <div class="role-card" data-role="Frontend Developer">Frontend Developer</div>
+                        <div class="role-card" data-role="Backend Developer">Backend Developer</div>
+                        <div class="role-card" data-role="Full Stack Developer">Full Stack Developer</div>
+                        <div class="role-card" data-role="DevOps Engineer">DevOps Engineer</div>
+                        <div class="role-card" data-role="Data Scientist">Data Scientist</div>
+                        <div class="role-card" data-role="ML Engineer">ML Engineer</div>
+                        <div class="role-card" data-role="QA Engineer">QA Engineer</div>
+                    </div>
+                </div>
+            </div>
+
             <form id="interviewForm" class="interview-form">
                 <div class="form-group">
-                    <label for="role">Role</label>
+                    <label for="role">Role/Position</label>
                     <input type="text" id="role" placeholder="e.g. Software Engineer" required>
                 </div>
 
@@ -24,6 +41,8 @@
                     <label for="level">Experience Level</label>
                     <select id="level" required>
                         <option value="">Select Level</option>
+                        <option value="Intern">Intern</option>
+                        <option value="Entry Level">Entry Level</option>
                         <option value="Junior">Junior</option>
                         <option value="Mid-Level">Mid-Level</option>
                         <option value="Senior">Senior</option>
@@ -40,6 +59,18 @@
                         <option value="System Design">System Design</option>
                         <option value="All">All Categories</option>
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Skills & Technologies</label>
+                    <input type="text" id="skills" placeholder="e.g. JavaScript, React, Node.js, Python">
+                    <small class="help-text">Separate multiple skills with commas</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Relevant Experience (Optional)</label>
+                    <textarea id="experience" rows="3" 
+                        placeholder="Brief description of your experience, projects, or academic background"></textarea>
                 </div>
 
                 <button type="submit">Generate Guide</button>
